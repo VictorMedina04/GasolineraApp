@@ -5,15 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { FilterPriceComponent } from './components/filter-price/filter-price.component';
+import { FormsModule } from '@angular/forms';
+import { MaterialModule } from './modules/material.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FilterPriceComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    MaterialModule
   ],
   providers: [
     provideAnimationsAsync()
