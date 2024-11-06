@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        @for (gasolinera of listadoGasolineras; track listadoGasolineras.indexOf(gasolinera)) {
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Estación: {{ gasolinera.nombre }}</h5>
+                    <p class="card-text">IDEESS: {{ gasolinera.id }}</p>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

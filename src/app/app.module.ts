@@ -8,11 +8,17 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { FilterPriceComponent } from './components/filter-price/filter-price.component';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './modules/material.module';
+import { provideHttpClient } from '@angular/common/http';
+import { GasListComponent } from './components/gas-list/gas-list.component';
+import { BannerComponent } from './shared/banner/banner.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilterPriceComponent
+    FilterPriceComponent,
+    GasListComponent,
+    BannerComponent
   ],
   imports: [
     BrowserModule,
@@ -22,8 +28,11 @@ import { MaterialModule } from './modules/material.module';
     MaterialModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient(),
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
