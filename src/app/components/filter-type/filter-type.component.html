@@ -1,0 +1,11 @@
+<!-- src/app/components/filter-type/filter-type.component.html -->
+<div class="form-group">
+    <label for="fuelType">Filtrar por tipo de gasolina:</label>
+    <select id="fuelType" class="form-control" (change)="filterGasoline($event)">
+        <option value="">Todos</option>
+        <option value="sinPlomo95">Sin Plomo 95</option>
+        <option value="sinPlomo98">Sin Plomo 98</option>
+        <option value="gasoleoA">Gasóleo A</option>
+        <option value="gasoleoPremium">Gasóleo Premium</option>
+    </select>
+</div>

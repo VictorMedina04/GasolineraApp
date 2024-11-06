@@ -10,13 +10,15 @@ import { MaterialModule } from './modules/material.module';
 import { provideHttpClient } from '@angular/common/http';
 import { GasListComponent } from './components/gas-list/gas-list.component';
 import { BannerComponent } from './shared/banner/banner.component';
+import { FilterTypeComponent } from './components/filter-type/filter-type.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     GasListComponent,
-    BannerComponent
+    BannerComponent,
+    FilterTypeComponent
   ],
   imports: [
     BrowserModule,
