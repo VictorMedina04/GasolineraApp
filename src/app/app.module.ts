@@ -12,6 +12,7 @@ import { GasListComponent } from './components/gas-list/gas-list.component';
 import { BannerComponent } from './shared/banner/banner.component';
 import { FilterTypeComponent } from './components/filter-type/filter-type.component';
 import { FilterCodeComponent } from './components/filter-code/filter-code.component';
+import { FilterNameComponent } from './components/filter-name/filter-name.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FilterCodeComponent } from './components/filter-code/filter-code.compon
     GasListComponent,
     BannerComponent,
     FilterTypeComponent,
-    FilterCodeComponent
+    FilterCodeComponent,
+    FilterNameComponent
   ],
   imports: [
     BrowserModule,

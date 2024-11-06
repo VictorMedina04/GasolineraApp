@@ -20,4 +20,11 @@ export class GasService {
   changePostalCode(postalCode: string) {
     this.postalCodeOriginal.next(postalCode);
   }
+
+  private nombresOriginales = new BehaviorSubject<string[]>([]);
+  nombresActuales = this.nombresOriginales.asObservable();
+
+  changeNames(names: string[]) {
+    this.nombresOriginales.next(names);
+  }
 }
