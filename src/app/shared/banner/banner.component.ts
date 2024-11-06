@@ -18,5 +18,7 @@ export class BannerComponent {
   onPostalCodeChange(postalCode: string) {
     this.gasService.changePostalCode(postalCode);
   }
-
+  onNamesChange(names: string[]) {
+    this.gasService.changeNames(names);
+  }
 }

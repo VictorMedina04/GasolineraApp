@@ -13,6 +13,7 @@ export class GasListComponent {
   listadoGasolineras: Gasolinera[] = [];
   @Input() selectedFuelType: string = '';
   filteredGasolineras: Gasolinera[] | undefined;
+  noResultsMessage: string = '';
 
 
   constructor(private gasService: GasService) { }
@@ -37,15 +38,17 @@ export class GasListComponent {
       if (postalCode) {
         this.filteredGasolineras = this.listadoGasolineras.filter(station => station.postalCode === postalCode);
       } else {
-        this.filteredGasolineras = this.listadoGasolineras;
+        this.noResultsMessage = 'No hay gasolineras con ese código postal';
       }
     });
-
-
-
-
-
+    this.gasService.nombresActuales.subscribe(names => {
+      if (names.length > 0) {
+        this.filteredGasolineras = this.listadoGasolineras.filter(station => names.includes(station.nombre));
+      } else {
+        this.noResultsMessage = 'No hay gasolineras con ese nombre';      }
+    });
   }
+  
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedFuelType']) {
       this.applyFilter();

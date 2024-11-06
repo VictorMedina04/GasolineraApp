@@ -1,0 +1,34 @@
+<!-- src/app/filter-name/filter-name.component.html -->
+<fieldset class="container mt-4">
+    <legend>Elegir nombres para buscar</legend>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="option1" name="option1" (change)="onCheckboxChange($event, 'CEPSA')">
+                <label class="form-check-label" for="option1">Cepsa</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="option2" name="option2" (change)="onCheckboxChange($event, 'REPSOL')">
+                <label class="form-check-label" for="option2">Repsol</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="option3" name="option3" (change)="onCheckboxChange($event, 'CARREFOUR')">
+                <label class="form-check-label" for="option3">Carrefour</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="option4" name="option4" (change)="onCheckboxChange($event, 'PLENOI')">
+                <label class="form-check-label" for="option4">Plenoi</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="option5" name="option5" (change)="onCheckboxChange($event, 'SHELL')">
+                <label class="form-check-label" for="option5">Shell</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="option6" name="option6" (change)="onCheckboxChange($event, 'GALP')">
+                <label class="form-check-label" for="option6">Galp</label>
+            </div>
+        </div>
+    </div>
+</fieldset>
