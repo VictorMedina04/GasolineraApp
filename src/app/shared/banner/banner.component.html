@@ -14,6 +14,9 @@
                 <li class="nav-item">
                     <app-filter-type (filterChanged)="onFilterChanged($event)"></app-filter-type>
                 </li>
+                <li>
+                    <app-filter-code (postalCodeChange)="onPostalCodeChange($event)"></app-filter-code>
+                </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"

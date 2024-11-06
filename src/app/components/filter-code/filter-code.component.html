@@ -1,0 +1,9 @@
+<div class="container">
+
+    <div class="form-group">
+        <label for="fuelCode">Filtrar por código postal:</label>
+        <input type="text" class="form-control" id="fuelCode" [(ngModel)]="postalCode"
+            placeholder="Ingrese código postal">
+    </div>
+    <button class="btn btn-primary mt-3 mb-2" (click)="filterGasStations()">Buscar por codigo</button>
+</div>

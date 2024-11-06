@@ -32,6 +32,19 @@ export class GasListComponent {
         console.error('Error parsing JSON:', error);
       }
     });
+
+    this.gasService.codigoPostalActual.subscribe(postalCode => {
+      if (postalCode) {
+        this.filteredGasolineras = this.listadoGasolineras.filter(station => station.postalCode === postalCode);
+      } else {
+        this.filteredGasolineras = this.listadoGasolineras;
+      }
+    });
+
+
+
+
+
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedFuelType']) {
@@ -86,5 +99,8 @@ export class GasListComponent {
       return false;
     });
   }
+
+  
+  
 }
 
