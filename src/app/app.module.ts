@@ -11,6 +11,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { GasListComponent } from './components/gas-list/gas-list.component';
 import { BannerComponent } from './shared/banner/banner.component';
 import { FilterTypeComponent } from './components/filter-type/filter-type.component';
+import { FilterCodeComponent } from './components/filter-code/filter-code.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FilterTypeComponent } from './components/filter-type/filter-type.compon
     AppComponent,
     GasListComponent,
     BannerComponent,
-    FilterTypeComponent
+    FilterTypeComponent,
+    FilterCodeComponent
   ],
   imports: [
     BrowserModule,
