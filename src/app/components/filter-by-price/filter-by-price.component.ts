@@ -16,7 +16,7 @@ export class FilterByPriceComponent {
   minValue = 1.00;
   maxValue = 2.00;
 
-  onPriceChange(): void {
+applyPriceFilter(): void {
     this.priceRangeChanged.emit({ min: this.minValue, max: this.maxValue });
   }
 }

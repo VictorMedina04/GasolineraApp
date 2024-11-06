@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Gasolinera } from '../../models/gas-item.dto';
 import { GasService } from '../../services/gas.service';
 
@@ -7,12 +7,12 @@ import { GasService } from '../../services/gas.service';
   templateUrl: './gas-list.component.html',
   styleUrl: './gas-list.component.css'
 })
-export class GasListComponent {
+export class GasListComponent implements OnInit, OnChanges {
 
 
   listadoGasolineras: Gasolinera[] = [];
   @Input() selectedFuelType: string = '';
-  @Input() priceRange: { min: number, max: number } = { min: 0, max: 100 };
+  @Input() priceRange: { min: number, max: number } = { min: 1.00, max: 2.00 };
 
   filteredGasolineras: Gasolinera[] | undefined;
 
@@ -35,7 +35,7 @@ export class GasListComponent {
       }
     });
   }
-   ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedFuelType'] || changes['priceRange']) {
       this.applyFilter();
     }
@@ -73,19 +73,34 @@ export class GasListComponent {
     return newArray;
   }
   applyFilter(): void {
+
     this.filteredGasolineras = this.listadoGasolineras.filter(gasolinera => {
       let price = 0;
-      if (this.selectedFuelType === 'sinPlomo95') {
+
+      if (this.selectedFuelType === '') {
+        return true; // Mostrar todas las gasolineras
+      } else if (this.selectedFuelType === 'sinPlomo95') {
         price = gasolinera.price95;
+
+        return gasolinera.price95 !== undefined;
       } else if (this.selectedFuelType === 'sinPlomo98') {
         price = gasolinera.price98;
+
+        return gasolinera.price98 !== undefined;
       } else if (this.selectedFuelType === 'gasoleoA') {
         price = gasolinera.priceDiesel;
+
+        return gasolinera.priceDiesel !== undefined;
       } else if (this.selectedFuelType === 'gasoleoPremium') {
         price = gasolinera.priceGasoleoPremium;
+
+        return gasolinera.priceGasoleoPremium !== undefined;
       }
+
       return price >= this.priceRange.min && price <= this.priceRange.max;
     });
+
   }
+
 }
 
