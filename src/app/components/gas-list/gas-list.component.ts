@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Gasolinera } from '../../models/gas-item.dto';
 import { GasService } from '../../services/gas.service';
 
@@ -9,7 +9,11 @@ import { GasService } from '../../services/gas.service';
 })
 export class GasListComponent {
 
+
   listadoGasolineras: Gasolinera[] = [];
+  @Input() selectedFuelType: string = '';
+  filteredGasolineras: Gasolinera[] | undefined;
+
 
   constructor(private gasService: GasService) { }
 
@@ -23,10 +27,16 @@ export class GasListComponent {
         parsedData = JSON.parse(respuestaEnString);
         let arrayGasolineras = parsedData['ListaEESSPrecio'];
         this.listadoGasolineras = this.cleanProperties(arrayGasolineras);
+        this.filteredGasolineras = this.listadoGasolineras;
       } catch (error) {
         console.error('Error parsing JSON:', error);
       }
     });
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['selectedFuelType']) {
+      this.applyFilter();
+    }
   }
 
   private cleanProperties(arrayGasolineras: any) {
@@ -60,4 +70,21 @@ export class GasListComponent {
     });
     return newArray;
   }
+  applyFilter(): void {
+    this.filteredGasolineras = this.listadoGasolineras.filter(gasolinera => {
+      if (this.selectedFuelType === '') {
+        return true; // Mostrar todas las gasolineras
+      } else if (this.selectedFuelType === 'sinPlomo95') {
+        return gasolinera.price95 !== undefined;
+      } else if (this.selectedFuelType === 'sinPlomo98') {
+        return gasolinera.price98 !== undefined;
+      } else if (this.selectedFuelType === 'gasoleoA') {
+        return gasolinera.priceDiesel !== undefined;
+      } else if (this.selectedFuelType === 'gasoleoPremium') {
+        return gasolinera.priceGasoleoPremium !== undefined;
+      }
+      return false;
+    });
+  }
 }
+

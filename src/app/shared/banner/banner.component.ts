@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './banner.component.css'
 })
 export class BannerComponent {
+  selectedFuelType: string = '';
 
+  onFilterChanged(type: string): void {
+    this.selectedFuelType = type;
+  }
 }
