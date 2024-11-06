@@ -1,0 +1,5 @@
+<mat-slider min="1.00" max="2.00" class="example-margin" [max]="max" [min]="min" [step]="step"
+    [discrete]="thumbLabel" [showTickMarks]="showTicks ? step : 0" (input)="onPriceChange()">
+    <input matSliderStartThumb [(ngModel)]="minValue">
+    <input matSliderEndThumb [(ngModel)]="maxValue">
+</mat-slider>

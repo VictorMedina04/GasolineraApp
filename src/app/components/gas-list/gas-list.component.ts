@@ -12,6 +12,8 @@ export class GasListComponent {
 
   listadoGasolineras: Gasolinera[] = [];
   @Input() selectedFuelType: string = '';
+  @Input() priceRange: { min: number, max: number } = { min: 0, max: 100 };
+
   filteredGasolineras: Gasolinera[] | undefined;
 
 
@@ -33,8 +35,8 @@ export class GasListComponent {
       }
     });
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['selectedFuelType']) {
+   ngOnChanges(changes: SimpleChanges): void {
+    if (changes['selectedFuelType'] || changes['priceRange']) {
       this.applyFilter();
     }
   }
@@ -72,18 +74,17 @@ export class GasListComponent {
   }
   applyFilter(): void {
     this.filteredGasolineras = this.listadoGasolineras.filter(gasolinera => {
-      if (this.selectedFuelType === '') {
-        return true; // Mostrar todas las gasolineras
-      } else if (this.selectedFuelType === 'sinPlomo95') {
-        return gasolinera.price95 !== undefined;
+      let price = 0;
+      if (this.selectedFuelType === 'sinPlomo95') {
+        price = gasolinera.price95;
       } else if (this.selectedFuelType === 'sinPlomo98') {
-        return gasolinera.price98 !== undefined;
+        price = gasolinera.price98;
       } else if (this.selectedFuelType === 'gasoleoA') {
-        return gasolinera.priceDiesel !== undefined;
+        price = gasolinera.priceDiesel;
       } else if (this.selectedFuelType === 'gasoleoPremium') {
-        return gasolinera.priceGasoleoPremium !== undefined;
+        price = gasolinera.priceGasoleoPremium;
       }
-      return false;
+      return price >= this.priceRange.min && price <= this.priceRange.max;
     });
   }
 }
