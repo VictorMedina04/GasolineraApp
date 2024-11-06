@@ -49,7 +49,11 @@ export class GasListComponent {
         gasolineraChusquera['Rótulo'],
         gasolineraChusquera['Precio Gasolina 95 E5'],
         gasolineraChusquera['Precio Gasoleo A'],
-        gasolineraChusquera['C.P.']
+        gasolineraChusquera['C.P.'],
+        gasolineraChusquera['Dirección'],
+        gasolineraChusquera['Horario'],
+        gasolineraChusquera['Precio Gasoleo Premium'],
+        gasolineraChusquera['Precio Gasolina 98 E5']
       );
 
       newArray.push(gasolinera);
